@@ -8,7 +8,6 @@ const recipeTemplate = Handlebars.compile(recipeTemplateSource);
 const mealTemplate = Handlebars.compile(mealTemplateSource);
 const mealRecipeTemplate = Handlebars.compile(mealRecipeTemplateSource);
 
-
 const pageData = document.querySelector('.pageData');
 const mealData = document.querySelector('.mealData');
 
