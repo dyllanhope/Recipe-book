@@ -13,6 +13,7 @@ const mealData = document.querySelector('.mealData');
 
 const categoryBtn = document.querySelector('.categories');
 const recipeBtn = document.querySelector('.recipes');
+const randomBtn = document.querySelector('.random');
 
 const alert = document.querySelector('.alert');
 const title = document.querySelector('.title');
@@ -20,6 +21,13 @@ const title = document.querySelector('.title');
 window.onload = () => {
     alert.style.display = 'none';
 };
+
+randomBtn.addEventListener('click', () => {
+    mealData.innerHTML = '';
+    pageData.innerHTML = '';
+    title.style.marginTop = 0;
+    pullRandom();
+});
 
 recipeBtn.addEventListener('click', () => {
     mealData.innerHTML = '';
@@ -39,6 +47,19 @@ categoryBtn.addEventListener('click', () => {
     title.style.marginTop = 0;
     pullCategories();
 });
+
+const pullRandom = () => {
+    axios
+        .get('https://www.themealdb.com/api/json/v1/1/random.php')
+        .then((res) => {
+            let response = res.data;
+            let data = response.meals;
+            let completeData = getIngredients(data);
+            let options = { meals: completeData };
+            let html = mealRecipeTemplate(options);
+            mealData.innerHTML = html;
+        });
+};
 
 const pullCategories = () => {
     axios
@@ -93,9 +114,9 @@ const buildSingleMeals = (meal) => {
                 recipeInput.innerHTML = '';
                 alert.style = '';
                 alert.innerHTML = 'We do not have a recipe for ' + meal;
-                setTimeout(()=>{
+                setTimeout(() => {
                     alert.style.display = 'none';
-                }, 3000); 
+                }, 3000);
             }
         });
 }
