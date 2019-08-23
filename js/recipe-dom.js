@@ -16,12 +16,15 @@ const categoryBtn = document.querySelector('.categories');
 const recipeBtn = document.querySelector('.recipes');
 
 const alert = document.querySelector('.alert');
+const title = document.querySelector('.title');
 
 window.onload = () => {
     alert.style.display = 'none';
 };
 
 recipeBtn.addEventListener('click', () => {
+    mealData.innerHTML = '';
+    title.style.marginTop = 0;
     let recHTML = recipeTemplate();
     pageData.innerHTML = recHTML;
     recipeSearchBtn = document.querySelector('.recipeSearch');
@@ -33,6 +36,8 @@ recipeBtn.addEventListener('click', () => {
 });
 
 categoryBtn.addEventListener('click', () => {
+    mealData.innerHTML = '';
+    title.style.marginTop = 0;
     pullCategories();
 });
 

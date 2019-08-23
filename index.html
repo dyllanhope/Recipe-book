@@ -25,7 +25,7 @@
         <div class='row'>
                 <div class='col-sm'></div>
                 <div class='col-sm'>
-                    <h1 class='text-center'> Categories </h1>
+                    <h1 style='color:white' class='text-center'> Categories </h1>
                     <select class="catDrop" id="">
                         {{#each list}}
                         <option value="{{this}}">{{this}}</option>
@@ -40,11 +40,11 @@
         <div class='row'>
                 <div class='col-sm'></div>
                 <div class='col-sm'>
-                    <h1 class='text-center'> Recipes </h1>
+                    <h1 style='color:white' class='text-center'> Recipes </h1>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control recipeInput" placeholder="e.g Lasagne" aria-label="Recipe name" aria-describedby="button-addon2">
                         <div class="input-group-append">
-                          <button class="btn btn-outline-secondary recipeSearch" type="button" id="button-addon2">Search</button>
+                          <button class="btn btn-outline-light recipeSearch" type="button" id="button-addon2">Search</button>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
         <div class='row'>
             <div class='col-sm'></div>            
             <div class='col-sm-5'>
-                <table class='mealList table' style='width:100%'>
+                <table class='mealList table' style='width:100%; background-color:white'>
                     {{#each list}}
                         <tr class='item'>
                             <td id='{{strMeal}}'><img style="width:80px;height:80px" src="{{strMealThumb}}" alt="{{strMeal}}"></td>
@@ -74,7 +74,7 @@
             <table class='table' style='width:100%'>
                 <tbody>
                         {{#each meals}}
-                        <tr>
+                        <tr style='background-color:white'>
                             <td>
                                 <img class='border' style='width:250px;height:250px' src="{{strMealThumb}}" alt="{{strMeal}}"> <br>
                                 <a href="{{strYoutube}}" class="badge badge-success">Youtube link</a>
@@ -101,15 +101,16 @@
     </script>
 </head>
 
-<body>
+<body background="./media/wallpaper.jpg">
     <div class='container'>
         <div class='row'>
             <div class='col-sm'></div>
             <div class='col-sm'>
-                <h1 class='text-center'>Recipe book</h1>
-                <h3 class='mx-auto'>Search by:</h3>
-                <button type="button" class="categories btn btn-outline-primary">Categories</button>
-                <button type="button" class="recipes btn btn-outline-primary">Recipe</button>
+                <h5 style='margin-top:250px; color: white' class='title'>Search our recipe book by:</h5>
+                <div class='mx-auto'>
+                    <button type="button" class="categories btn btn-outline-light">Categories</button>
+                    <button type="button" class="recipes btn btn-outline-light">Recipe</button>
+                </div>
             </div>
             <div class='col-sm'></div>
         </div>
