@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -19,12 +20,109 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Recipe book</title>
+
+    <script type='text/template' class='categoryTemplate'>
+        <div class='row'>
+                <div class='col-sm'></div>
+                <div class='col-sm'>
+                    <h1 class='text-center'> Categories </h1>
+                    <select class="catDrop" id="">
+                        {{#each list}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class='col-sm'></div>            
+        </div>
+    </script>
+
+    <script type='text/template' class='recipeTemplate'>
+        <div class='row'>
+                <div class='col-sm'></div>
+                <div class='col-sm'>
+                    <h1 class='text-center'> Recipes </h1>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control recipeInput" placeholder="Recipe name" aria-label="Recipe name" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary recipeSearch" type="button" id="button-addon2">Search</button>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-sm'></div>            
+        </div>
+    </script>
+
+    <script type='text/template' class='mealTemplate'>
+        <div class='row'>
+            <div class='col-sm'></div>            
+            <div class='col-sm-5'>
+                <table class='mealList table' style='width:100%'>
+                    {{#each list}}
+                        <tr class='item'>
+                            <td id='{{strMeal}}'><img style="width:80px;height:80px" src="{{strMealThumb}}" alt="{{strMeal}}"></td>
+                            <td id='{{strMeal}}'><strong>{{strMeal}}</strong></td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>            
+            <div class='col-sm'></div>        
+        </div>
+    </script>
+
+    <script type='text/template' class='mealRecipeTemplate'>
+        <div class='row'>
+            <table class='table' style='width:100%'>
+                <tbody>
+                        {{#each meals}}
+                        <tr>
+                            <td>
+                                <img class='border' style='width:250px;height:250px' src="{{strMealThumb}}" alt="{{strMeal}}"> <br>
+                                <a href="{{strYoutube}}" class="badge badge-success">Youtube link</a>
+                                <span class="badge badge-warning">Origin: {{strArea}}</span>
+                                <span class="badge badge-info">Category: {{strCategory}}</span>
+                            </td>
+                            <td style='width:600px'>
+                                <h4>{{strMeal}}</h4>
+                                <p>{{strInstructions}}</p>
+                            </td>
+                            <td>
+                                <ul class="">
+                                    <h5>Ingredients:</h5>
+                                        {{#each ingredientList}}
+                                            <li>{{this}}</li>
+                                        {{/each}}
+                                </ul>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>       
+        </div>
+    </script>
 </head>
+
 <body>
     <div class='container'>
         <div class='row'>
-            <h1>hi</h1>
+            <div class='col-sm'></div>
+            <div class='col-sm'>
+                <h1 class='text-center'>Recipe book</h1>
+                <h3 class='mx-auto'>Search by:</h3>
+                <button type="button" class="categories btn btn-outline-primary">Categories</button>
+                <button type="button" class="recipes btn btn-outline-primary">Recipe</button>
+            </div>
+            <div class='col-sm'></div>
         </div>
+        <div class='pageData'></div>
+        <div class='row'>
+            <div class='col-sm'></div>
+            <div class="alert alert-danger col-sm" role="alert"></div>
+            <div class='col-sm'></div>
+        </div>
+        <div class='mealData'></div>
     </div>
+
+    <script src='./js/recipe-dom.js'></script>
 </body>
+
 </html>
